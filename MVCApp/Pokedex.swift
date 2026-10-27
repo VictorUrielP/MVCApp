@@ -11,10 +11,18 @@ import os
 class PokeDex {
     private static let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "MVCApp", category: "PokeDex")
 
-    var pokemons: [Pokemon] = PokeDex.loadPokemons()
+    let pokemons: [Pokemon]
 
-    private static func loadPokemons() -> [Pokemon] {
-        guard let url = Bundle.main.url(forResource: "pokemons", withExtension: "json") else {
+    init(pokemons: [Pokemon]) {
+        self.pokemons = pokemons
+    }
+
+    convenience init(bundle: Bundle = .main) {
+        self.init(pokemons: PokeDex.loadPokemons(from: bundle))
+    }
+
+    private static func loadPokemons(from bundle: Bundle) -> [Pokemon] {
+        guard let url = bundle.url(forResource: "pokemons", withExtension: "json") else {
             logger.error("pokemons.json is missing from the app bundle")
             return []
         }
