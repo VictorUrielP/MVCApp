@@ -33,12 +33,12 @@ class ViewController: UIViewController {
 
     // MARK: Pokemon List Operations
     func addPokemon() {
-        guard let index = pokedex.pokemons.firstIndex(where: { $0.id == pokemons.last?.id }),
-        pokedex.pokemons.count > index+1
-        else {
+        guard let next = pokedex.pokemons.first(where: { candidate in
+            !pokemons.contains { $0.id == candidate.id }
+        }) else {
             return
         }
-        pokemons.append(pokedex.pokemons[index+1])
+        pokemons.append(next)
     }
 
     func removePokemon(at index: Int) {
