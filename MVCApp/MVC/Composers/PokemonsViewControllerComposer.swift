@@ -7,9 +7,11 @@
 
 import Foundation
 
-final class PokemonsViewControllerComposer {
-    
-    static func viewControllerComposed(with pokemonsViewModel: PokemonsViewModel, pokemonAggregator: PokemonAggregator) -> PokemonsViewController {
+enum PokemonsViewControllerComposer {
+
+    static func make(pokedex: PokeDex = PokeDex()) -> PokemonsViewController {
+        let pokemonsViewModel = PokemonsViewModel(pokedex: pokedex)
+        let pokemonAggregator = PokemonAggregator(pokedex: pokedex)
         let addPokemonController = AddPokemonController(pokemonAggregator: pokemonAggregator, pokemonsViewModel: pokemonsViewModel)
         let removePokemonController = RemovePokemonController(pokemonsViewModel: pokemonsViewModel)
         let pokemonsViewController = PokemonsViewController(viewModel: pokemonsViewModel, addPokemonController: addPokemonController, removePokemonController: removePokemonController)
