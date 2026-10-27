@@ -10,7 +10,7 @@ import UIKit
 
 final class PokemonsViewModel: NSObject {
     private let pokedex = PokeDex()
-    private(set) lazy var pokemons: [Pokemon] = Array(pokedex.pokemons[...3])
+    private(set) lazy var pokemons: [Pokemon] = Array(pokedex.pokemons.prefix(4))
     
     // MARK: - Computed properties
     var numberOfItems: Int {
