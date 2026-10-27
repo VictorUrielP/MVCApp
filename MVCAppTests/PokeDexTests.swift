@@ -3,6 +3,7 @@
 //  MVCAppTests
 //
 
+import UIKit
 import XCTest
 @testable import MVCApp
 
