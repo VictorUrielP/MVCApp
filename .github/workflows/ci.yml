@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, final/multiple-mvcs-approach]
+  workflow_dispatch:
+
+jobs:
+  app:
+    name: Build app
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: |
+          xcodebuild build \
+            -project MVCApp.xcodeproj \
+            -target MVCApp \
+            -sdk iphonesimulator \
+            -quiet \
+            CODE_SIGNING_ALLOWED=NO
+
+  playground:
+    name: Type-check playground
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Type-check each page
+        run: |
+          set -e
+          for page in design-patterns.playground/Pages/*/Contents.swift; do
+            echo "::group::$page"
+            xcrun --sdk macosx swiftc -typecheck "$page"
+            echo "::endgroup::"
+          done
