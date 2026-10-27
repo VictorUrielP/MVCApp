@@ -2,11 +2,6 @@ protocol Strategy {
     func execute()
 }
 
-protocol Context {
-    func setStrategy(_ strategy: Strategy)
-    func executeStrategy()
-}
-
 class FastestRoute: Strategy {
     func execute() {
         print("taking the fastest route!")
@@ -19,22 +14,20 @@ class ShortestRoute: Strategy {
     }
 }
 
-class Driving: Context {
-    var strategy: Strategy? = nil
-    func setStrategy(_ strategy: Strategy) {
+// The context always has a strategy: it is injected through init and can be swapped later.
+class Driving {
+    var strategy: Strategy
+
+    init(strategy: Strategy) {
         self.strategy = strategy
     }
+
     func executeStrategy() {
-        guard let strategy = strategy else { return }
         strategy.execute()
     }
 }
 
-let driving = Driving()
-let routeA = FastestRoute()
-let routeB = ShortestRoute()
-
-driving.setStrategy(routeA)
+let driving = Driving(strategy: FastestRoute())
 driving.executeStrategy()
-driving.setStrategy(routeB)
+driving.strategy = ShortestRoute()
 driving.executeStrategy()
