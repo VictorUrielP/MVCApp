@@ -26,18 +26,18 @@ final class PokemonListTests: XCTestCase {
         XCTAssertTrue(sut.pokemons.isEmpty)
     }
 
-    func test_addPokemon_appendsToTheEnd() {
+    func test_append_addsToTheEnd() {
         let sut = PokemonList(pokedex: makePokedex(ids: [1, 2]))
 
-        sut.addPokemon(pokemon: makePokemon(id: 9))
+        sut.append(makePokemon(id: 9))
 
         XCTAssertEqual(sut.pokemons.map(\.id), [1, 2, 9])
     }
 
-    func test_removePokemon_removesTheEntryAtIndex() {
+    func test_remove_removesTheEntryAtIndex() {
         let sut = PokemonList(pokedex: makePokedex(ids: [1, 2, 3]))
 
-        sut.removePokemon(at: 1)
+        sut.remove(at: 1)
 
         XCTAssertEqual(sut.pokemons.map(\.id), [1, 3])
     }

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PokemonsViewController.swift
 //  MVCApp
 //
 //  Created by Jorge Benavides
@@ -45,10 +45,10 @@ final class PokemonsViewController: UIViewController {
     
     private func bind() {
         addPokemonController.didAddPokemon = { [weak self] in
-            self?.tableViewDidSelectAdd()
+            self?.pokemonWasAdded()
         }
         removePokemonController.didRemovePokemon = { [weak self] in
-            self?.tableViewDidSelectRemove()
+            self?.pokemonWasRemoved()
         }
         removePokemonController.selectedIndex = { [weak self] in
             self?.tableView.indexPathForSelectedRow?.row
@@ -57,13 +57,13 @@ final class PokemonsViewController: UIViewController {
     }
     
     // MARK: TableView Operations
-    private func tableViewDidSelectAdd() {
+    private func pokemonWasAdded() {
         tableView.reloadData()
         removePokemonController.selectionDidChange()
         scrollToBottom()
     }
 
-    private func tableViewDidSelectRemove() {
+    private func pokemonWasRemoved() {
         tableView.reloadData()
         removePokemonController.selectionDidChange()
     }
