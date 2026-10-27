@@ -1,3 +1,9 @@
+//: [Factory Method](@previous)
+
+//    Observer
+//    Observer is a behavioral design pattern that lets an object (the subject) notify a list of
+//    subscribers whenever its state changes, without knowing their concrete types.
+
 protocol Subscriber: AnyObject {
     func notify(_ news: String)
 }
@@ -57,3 +63,5 @@ cnn.setNews("Rain tomorrow")        // Ana read: Rain tomorrow
 
 cnn.removeObserver(ana)
 cnn.setNews("Nobody hears this")    // prints nothing
+
+//: [Strategy](@next)

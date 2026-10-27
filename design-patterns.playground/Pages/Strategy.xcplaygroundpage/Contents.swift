@@ -1,3 +1,9 @@
+//: [Observer](@previous)
+
+//    Strategy
+//    Strategy is a behavioral design pattern that defines a family of interchangeable algorithms
+//    and lets the context pick or swap one at run time without changing its own code.
+
 protocol Strategy {
     func execute()
 }
