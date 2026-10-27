@@ -9,8 +9,8 @@ final class PokemonAggregator {
     private let pokedex = PokeDex()
     
     func addPokemon(pokemons: [Pokemon]) -> Pokemon? {
-        guard let index = pokedex.pokemons.firstIndex(where: { $0.id == pokemons.last?.id }),
-              pokedex.pokemons.count > index+1 else { return nil }
-        return pokedex.pokemons[index+1]
+        pokedex.pokemons.first { candidate in
+            !pokemons.contains { $0.id == candidate.id }
+        }
     }
 }
