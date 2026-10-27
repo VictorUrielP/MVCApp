@@ -25,11 +25,11 @@ final class PokemonList {
         pokemons[index]
     }
     
-    func addPokemon(pokemon: Pokemon) {
+    func append(_ pokemon: Pokemon) {
         pokemons.append(pokemon)
     }
 
-    func removePokemon(at index: Int) {
+    func remove(at index: Int) {
         pokemons.remove(at: index)
     }
 }

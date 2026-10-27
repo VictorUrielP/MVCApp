@@ -25,7 +25,7 @@ final class RemovePokemonController {
     
     @objc func removeButtonPressed() {
         guard let index = selectedIndex?() else { return }
-        pokemonList.removePokemon(at: index)
+        pokemonList.remove(at: index)
         didRemovePokemon?()
     }
 }

@@ -8,34 +8,34 @@ import XCTest
 
 final class PokemonAggregatorTests: XCTestCase {
 
-    func test_addPokemon_returnsTheFirstEntryNotListed() {
+    func test_nextPokemon_returnsTheFirstEntryNotListed() {
         let sut = PokemonAggregator(pokedex: makePokedex(ids: [1, 2, 3]))
 
-        let next = sut.addPokemon(pokemons: [makePokemon(id: 1)])
+        let next = sut.nextPokemon(notIn: [makePokemon(id: 1)])
 
         XCTAssertEqual(next?.id, 2)
     }
 
-    func test_addPokemon_withEmptyList_returnsTheFirstEntry() {
+    func test_nextPokemon_withEmptyList_returnsTheFirstEntry() {
         let sut = PokemonAggregator(pokedex: makePokedex(ids: [1, 2, 3]))
 
-        let next = sut.addPokemon(pokemons: [])
+        let next = sut.nextPokemon(notIn: [])
 
         XCTAssertEqual(next?.id, 1)
     }
 
-    func test_addPokemon_returnsAPreviouslyRemovedEntry() {
+    func test_nextPokemon_returnsAPreviouslyRemovedEntry() {
         let sut = PokemonAggregator(pokedex: makePokedex(ids: [1, 2, 3]))
 
-        let next = sut.addPokemon(pokemons: [makePokemon(id: 1), makePokemon(id: 3)])
+        let next = sut.nextPokemon(notIn: [makePokemon(id: 1), makePokemon(id: 3)])
 
         XCTAssertEqual(next?.id, 2)
     }
 
-    func test_addPokemon_whenEveryEntryIsListed_returnsNil() {
+    func test_nextPokemon_whenEveryEntryIsListed_returnsNil() {
         let sut = PokemonAggregator(pokedex: makePokedex(ids: [1, 2]))
 
-        let next = sut.addPokemon(pokemons: [makePokemon(id: 1), makePokemon(id: 2)])
+        let next = sut.nextPokemon(notIn: [makePokemon(id: 1), makePokemon(id: 2)])
 
         XCTAssertNil(next)
     }

@@ -12,7 +12,7 @@ final class PokemonAggregator {
         self.pokedex = pokedex
     }
     
-    func addPokemon(pokemons: [Pokemon]) -> Pokemon? {
+    func nextPokemon(notIn pokemons: [Pokemon]) -> Pokemon? {
         pokedex.pokemons.first { candidate in
             !pokemons.contains { $0.id == candidate.id }
         }
