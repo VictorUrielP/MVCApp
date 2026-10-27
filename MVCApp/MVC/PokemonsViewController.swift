@@ -13,7 +13,7 @@ final class PokemonsViewController: UIViewController {
     private let pokemonList: PokemonList
     private var addPokemonController: AddPokemonController
     private var removePokemonController: RemovePokemonController
-    private lazy var tableView = UITableView(frame: view.bounds, style: .plain)
+    private let tableView = UITableView(frame: .zero, style: .plain)
 
     // MARK: - Life cycle callbacks
     override func viewDidLoad() {
@@ -37,7 +37,14 @@ final class PokemonsViewController: UIViewController {
     
     // MARK: Initial setup
     private func configureTableView() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(PokemonCell.self, forCellReuseIdentifier: PokemonCell.reuseIdentifier)
