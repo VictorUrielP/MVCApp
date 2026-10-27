@@ -24,6 +24,7 @@
 		E1A00010290C000000ABCDEF /* PokemonListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A0000C290C000000ABCDEF /* PokemonListTests.swift */; };
 		E1A00011290C000000ABCDEF /* PokemonAggregatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A0000D290C000000ABCDEF /* PokemonAggregatorTests.swift */; };
 		E1A00012290C000000ABCDEF /* PokeDexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A0000E290C000000ABCDEF /* PokeDexTests.swift */; };
+		E1A00021290C000000ABCDEF /* RemovePokemonControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A00020290C000000ABCDEF /* RemovePokemonControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		E1A0000C290C000000ABCDEF /* PokemonListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListTests.swift; sourceTree = "<group>"; };
 		E1A0000D290C000000ABCDEF /* PokemonAggregatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonAggregatorTests.swift; sourceTree = "<group>"; };
 		E1A0000E290C000000ABCDEF /* PokeDexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeDexTests.swift; sourceTree = "<group>"; };
+		E1A00020290C000000ABCDEF /* RemovePokemonControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemovePokemonControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				E1A0000C290C000000ABCDEF /* PokemonListTests.swift */,
 				E1A0000D290C000000ABCDEF /* PokemonAggregatorTests.swift */,
 				E1A0000E290C000000ABCDEF /* PokeDexTests.swift */,
+				E1A00020290C000000ABCDEF /* RemovePokemonControllerTests.swift */,
 			);
 			path = MVCAppTests;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				E1A00010290C000000ABCDEF /* PokemonListTests.swift in Sources */,
 				E1A00011290C000000ABCDEF /* PokemonAggregatorTests.swift in Sources */,
 				E1A00012290C000000ABCDEF /* PokeDexTests.swift in Sources */,
+				E1A00021290C000000ABCDEF /* RemovePokemonControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

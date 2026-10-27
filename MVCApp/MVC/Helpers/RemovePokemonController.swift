@@ -10,22 +10,22 @@ import UIKit
 final class RemovePokemonController {
     private(set) lazy var view = UIButton.systemButton(with: .remove, target: self, action: #selector(removeButtonPressed))
     private let pokemonList: PokemonList
-    private var pokemonToRemoveIndex: Int?
-    
+
+    /// Reads the current selection from the view, which owns it.
+    var selectedIndex: (() -> Int?)?
     var didRemovePokemon: (() -> Void)?
 
     init(pokemonList: PokemonList) {
         self.pokemonList = pokemonList
     }
     
-    func pokemonToRemove(_ index: Int?) {
-        pokemonToRemoveIndex = index
+    func selectionDidChange() {
+        view.isEnabled = selectedIndex?() != nil
     }
     
     @objc func removeButtonPressed() {
-        guard let pokemonToRemoveIndex = pokemonToRemoveIndex else { return }
-        pokemonList.removePokemon(at: pokemonToRemoveIndex)
-        self.pokemonToRemoveIndex = nil
+        guard let index = selectedIndex?() else { return }
+        pokemonList.removePokemon(at: index)
         didRemovePokemon?()
     }
 }
