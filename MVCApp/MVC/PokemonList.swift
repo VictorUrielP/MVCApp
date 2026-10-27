@@ -1,5 +1,5 @@
 //
-//  PokemonsDataModel.swift
+//  PokemonList.swift
 //  MVCApp
 //
 //  Created by Victor Pacheco on 28/10/22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class PokemonsViewModel {
+final class PokemonList {
     private let pokedex: PokeDex
     private(set) lazy var pokemons: [Pokemon] = Array(pokedex.pokemons.prefix(4))
 

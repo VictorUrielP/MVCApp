@@ -10,18 +10,18 @@ import UIKit
 final class AddPokemonController {
     private(set) lazy var view = UIButton.systemButton(with: .add, target: self, action: #selector(addButtonPressed))
     private let pokemonAggregator: PokemonAggregator
-    private let pokemonsViewModel: PokemonsViewModel
+    private let pokemonList: PokemonList
     
     var didAddPokemon: (() -> Void)?
 
-    init(pokemonAggregator: PokemonAggregator, pokemonsViewModel: PokemonsViewModel) {
+    init(pokemonAggregator: PokemonAggregator, pokemonList: PokemonList) {
         self.pokemonAggregator = pokemonAggregator
-        self.pokemonsViewModel = pokemonsViewModel
+        self.pokemonList = pokemonList
     }
     
     @objc func addButtonPressed() {
-        guard let pokemon = pokemonAggregator.addPokemon(pokemons: pokemonsViewModel.pokemons) else { return }
-        pokemonsViewModel.addPokemon(pokemon: pokemon)
+        guard let pokemon = pokemonAggregator.addPokemon(pokemons: pokemonList.pokemons) else { return }
+        pokemonList.addPokemon(pokemon: pokemon)
         didAddPokemon?()
     }
 }

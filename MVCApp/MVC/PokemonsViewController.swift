@@ -10,7 +10,7 @@ import UIKit
 final class PokemonsViewController: UIViewController {
 
     // MARK: - Stored Properties
-    private let viewModel: PokemonsViewModel
+    private let pokemonList: PokemonList
     private var addPokemonController: AddPokemonController
     private var removePokemonController: RemovePokemonController
     private lazy var tableView = UITableView(frame: view.bounds, style: .plain)
@@ -22,10 +22,10 @@ final class PokemonsViewController: UIViewController {
         bind()
     }
     
-    init(viewModel: PokemonsViewModel,
+    init(pokemonList: PokemonList,
          addPokemonController: AddPokemonController,
          removePokemonController: RemovePokemonController) {
-        self.viewModel = viewModel
+        self.pokemonList = pokemonList
         self.addPokemonController = addPokemonController
         self.removePokemonController = removePokemonController
         super.init(nibName: nil, bundle: nil)
@@ -68,8 +68,8 @@ final class PokemonsViewController: UIViewController {
     }
     
     private func scrollToBottom() {
-        guard viewModel.numberOfItems > 0 else { return }
-        let lastIndexPath = IndexPath(row: viewModel.numberOfItems - 1, section: 0)
+        guard pokemonList.numberOfItems > 0 else { return }
+        let lastIndexPath = IndexPath(row: pokemonList.numberOfItems - 1, section: 0)
         tableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
     }
 }
@@ -78,12 +78,12 @@ final class PokemonsViewController: UIViewController {
 extension PokemonsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.numberOfItems
+        pokemonList.numberOfItems
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cellController = tableView.dequeueReusableCell(withIdentifier: "PokemonCellController", for: indexPath) as? PokemonCellController else { return UITableViewCell() }
-        let pokemon = viewModel.pokemon(at: indexPath.row)
+        let pokemon = pokemonList.pokemon(at: indexPath.row)
         return cellController.configured(with: pokemon)
     }
 
