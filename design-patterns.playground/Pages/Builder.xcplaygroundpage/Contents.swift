@@ -102,4 +102,4 @@ menu.forEach { print($0.name, $0.price) }
 // Kids combo 5.5
 // Family combo 16.5
 
-//: [Flyweight](@next)
+//: [Singleton](@next)
