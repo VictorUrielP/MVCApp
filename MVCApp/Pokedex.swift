@@ -8,7 +8,7 @@
 import Foundation
 import os
 
-class PokeDex {
+final class PokeDex {
     private static let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "MVCApp", category: "PokeDex")
 
     let pokemons: [Pokemon]

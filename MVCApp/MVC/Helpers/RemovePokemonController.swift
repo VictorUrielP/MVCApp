@@ -23,7 +23,7 @@ final class RemovePokemonController {
         barButtonItem.isEnabled = selectedIndex?() != nil
     }
     
-    @objc func removeButtonPressed() {
+    @objc private func removeButtonPressed() {
         guard let index = selectedIndex?() else { return }
         pokemonList.remove(at: index)
         didRemovePokemon?(index)
