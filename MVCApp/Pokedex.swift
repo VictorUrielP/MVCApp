@@ -28,7 +28,9 @@ final class PokeDex {
         }
         do {
             let data = try Data(contentsOf: url)
-            return try JSONDecoder().decode([Pokemon].self, from: data)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            return try decoder.decode([Pokemon].self, from: data)
         } catch {
             logger.error("Failed to load pokemons.json: \(String(describing: error), privacy: .public)")
             return []
@@ -41,7 +43,7 @@ struct Pokemon: Decodable {
     let name: String
     let image: String
     let weight: Int
-    let base_experience: Int
+    let baseExperience: Int
     let types: [String]
     let abilities: [String]
 }

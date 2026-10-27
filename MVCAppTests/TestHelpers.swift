@@ -11,7 +11,7 @@ func makePokemon(id: Int) -> Pokemon {
             name: "pokemon-\(id)",
             image: "p.pokemon-\(id)",
             weight: 1,
-            base_experience: 1,
+            baseExperience: 1,
             types: [],
             abilities: [])
 }
