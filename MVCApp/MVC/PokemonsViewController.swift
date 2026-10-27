@@ -11,8 +11,8 @@ final class PokemonsViewController: UIViewController {
 
     // MARK: - Stored Properties
     private let pokemonList: PokemonList
-    private var addPokemonController: AddPokemonController
-    private var removePokemonController: RemovePokemonController
+    private let addPokemonController: AddPokemonController
+    private let removePokemonController: RemovePokemonController
     private let tableView = UITableView(frame: .zero, style: .plain)
 
     // MARK: - Life cycle callbacks

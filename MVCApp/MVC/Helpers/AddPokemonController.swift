@@ -19,7 +19,7 @@ final class AddPokemonController {
         self.pokemonList = pokemonList
     }
     
-    @objc func addButtonPressed() {
+    @objc private func addButtonPressed() {
         guard let pokemon = pokemonAggregator.nextPokemon(notIn: pokemonList.pokemons) else { return }
         pokemonList.append(pokemon)
         didAddPokemon?()
