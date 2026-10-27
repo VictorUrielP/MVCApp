@@ -8,7 +8,7 @@
 import UIKit
 
 final class RemovePokemonController {
-    private(set) lazy var view = UIButton.systemButton(with: .remove, target: self, action: #selector(removeButtonPressed))
+    private(set) lazy var barButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(removeButtonPressed))
     private let pokemonList: PokemonList
 
     /// Reads the current selection from the view, which owns it.
@@ -20,7 +20,7 @@ final class RemovePokemonController {
     }
     
     func selectionDidChange() {
-        view.isEnabled = selectedIndex?() != nil
+        barButtonItem.isEnabled = selectedIndex?() != nil
     }
     
     @objc func removeButtonPressed() {
