@@ -18,6 +18,7 @@ final class PokemonsViewController: UIViewController {
     // MARK: - Life cycle callbacks
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigationItem()
         configureTableView()
         bind()
     }
@@ -36,6 +37,12 @@ final class PokemonsViewController: UIViewController {
     }
     
     // MARK: Initial setup
+    private func configureNavigationItem() {
+        title = "Pokédex"
+        navigationItem.leftBarButtonItem = removePokemonController.barButtonItem
+        navigationItem.rightBarButtonItem = addPokemonController.barButtonItem
+    }
+
     private func configureTableView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
@@ -101,22 +108,6 @@ extension PokemonsViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension PokemonsViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        removePokemonController.view
-    }
-
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        addPokemonController.view
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        60
-    }
-
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        60
-    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         removePokemonController.selectionDidChange()

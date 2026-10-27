@@ -37,10 +37,10 @@ final class RemovePokemonControllerTests: XCTestCase {
         sut.selectedIndex = { selection }
 
         sut.selectionDidChange()
-        XCTAssertFalse(sut.view.isEnabled)
+        XCTAssertFalse(sut.barButtonItem.isEnabled)
 
         selection = 0
         sut.selectionDidChange()
-        XCTAssertTrue(sut.view.isEnabled)
+        XCTAssertTrue(sut.barButtonItem.isEnabled)
     }
 }

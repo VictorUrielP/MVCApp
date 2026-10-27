@@ -8,7 +8,7 @@
 import UIKit
 
 final class AddPokemonController {
-    private(set) lazy var view = UIButton.systemButton(with: .add, target: self, action: #selector(addButtonPressed))
+    private(set) lazy var barButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed))
     private let pokemonAggregator: PokemonAggregator
     private let pokemonList: PokemonList
     
