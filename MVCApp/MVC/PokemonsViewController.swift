@@ -39,7 +39,7 @@ final class PokemonsViewController: UIViewController {
     private func configureTableView() {
         view.addSubview(tableView)
         tableView.delegate = self
-        tableView.dataSource = viewModel
+        tableView.dataSource = self
         tableView.register(PokemonCellController.self, forCellReuseIdentifier: "PokemonCellController")
     }
     
@@ -68,9 +68,25 @@ final class PokemonsViewController: UIViewController {
     }
     
     private func scrollToBottom() {
-        guard let lastIndexPath = viewModel.getLastIndexPath() else { return }
+        guard viewModel.numberOfItems > 0 else { return }
+        let lastIndexPath = IndexPath(row: viewModel.numberOfItems - 1, section: 0)
         tableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
     }
+}
+
+// MARK: - UITableViewDataSource
+extension PokemonsViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.numberOfItems
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cellController = tableView.dequeueReusableCell(withIdentifier: "PokemonCellController", for: indexPath) as? PokemonCellController else { return UITableViewCell() }
+        let pokemon = viewModel.pokemon(at: indexPath.row)
+        return cellController.configured(with: pokemon)
+    }
+
 }
 
 // MARK: - UITableViewDelegate

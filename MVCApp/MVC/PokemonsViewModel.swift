@@ -6,15 +6,13 @@
 //
 
 import Foundation
-import UIKit
 
-final class PokemonsViewModel: NSObject {
+final class PokemonsViewModel {
     private let pokedex: PokeDex
     private(set) lazy var pokemons: [Pokemon] = Array(pokedex.pokemons.prefix(4))
 
     init(pokedex: PokeDex) {
         self.pokedex = pokedex
-        super.init()
     }
     
     // MARK: - Computed properties
@@ -34,24 +32,4 @@ final class PokemonsViewModel: NSObject {
     func removePokemon(at index: Int) {
         pokemons.remove(at: index)
     }
-    
-    func getLastIndexPath() -> IndexPath? {
-        guard numberOfItems > 0 else { return nil }
-        return IndexPath(row: numberOfItems - 1, section: 0)
-    }
-}
-
-// MARK: - UITableViewDataSource
-extension PokemonsViewModel: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        numberOfItems
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cellController = tableView.dequeueReusableCell(withIdentifier: "PokemonCellController", for: indexPath) as? PokemonCellController else { return UITableViewCell() }
-        let pokemon = pokemon(at: indexPath.row)
-        return cellController.configured(with: pokemon)
-    }
-
 }
