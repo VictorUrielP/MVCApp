@@ -1,3 +1,10 @@
+//: [Flyweight](@previous)
+
+//    Factory Method
+//    Factory Method is a creational design pattern that defines an interface for creating an object,
+//    but lets the conforming types decide which concrete type to create.
+//    Client code depends only on the abstractions (Car, CarFactory), never on Sedan directly.
+
 protocol Car {
     var type: String { get }
 }
@@ -29,3 +36,5 @@ struct Example {
 
 let example = Example(factory: SedanFactory())
 example.run()
+
+//: [Observer](@next)
