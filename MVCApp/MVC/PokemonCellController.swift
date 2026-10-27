@@ -8,12 +8,14 @@
 import UIKit
 
 final class PokemonCellController: UITableViewCell {
-    func configured(with pokemon: Pokemon) -> UITableViewCell {
+    static let reuseIdentifier = "PokemonCellController"
+    private static let maximumImageSize = CGSize(width: 80, height: 80)
+
+    func configure(with pokemon: Pokemon) {
         var config = defaultContentConfiguration()
         config.text = pokemon.name
         config.image = UIImage(named: pokemon.image)
-        config.imageProperties.maximumSize = .init(width: 80, height: 80)
+        config.imageProperties.maximumSize = Self.maximumImageSize
         contentConfiguration = config
-        return self
     }
 }

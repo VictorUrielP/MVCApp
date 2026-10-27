@@ -40,7 +40,7 @@ final class PokemonsViewController: UIViewController {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(PokemonCellController.self, forCellReuseIdentifier: "PokemonCellController")
+        tableView.register(PokemonCellController.self, forCellReuseIdentifier: PokemonCellController.reuseIdentifier)
     }
     
     private func bind() {
@@ -83,9 +83,11 @@ extension PokemonsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cellController = tableView.dequeueReusableCell(withIdentifier: "PokemonCellController", for: indexPath) as? PokemonCellController else { return UITableViewCell() }
-        let pokemon = pokemonList.pokemon(at: indexPath.row)
-        return cellController.configured(with: pokemon)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PokemonCellController.reuseIdentifier, for: indexPath) as? PokemonCellController else {
+            fatalError("Expected a PokemonCellController for \(PokemonCellController.reuseIdentifier); is the cell registered?")
+        }
+        cell.configure(with: pokemonList.pokemon(at: indexPath.row))
+        return cell
     }
 
 }
