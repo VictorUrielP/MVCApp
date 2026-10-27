@@ -10,11 +10,11 @@ import Foundation
 enum PokemonsViewControllerComposer {
 
     static func make(pokedex: PokeDex = PokeDex()) -> PokemonsViewController {
-        let pokemonsViewModel = PokemonsViewModel(pokedex: pokedex)
+        let pokemonList = PokemonList(pokedex: pokedex)
         let pokemonAggregator = PokemonAggregator(pokedex: pokedex)
-        let addPokemonController = AddPokemonController(pokemonAggregator: pokemonAggregator, pokemonsViewModel: pokemonsViewModel)
-        let removePokemonController = RemovePokemonController(pokemonsViewModel: pokemonsViewModel)
-        let pokemonsViewController = PokemonsViewController(viewModel: pokemonsViewModel, addPokemonController: addPokemonController, removePokemonController: removePokemonController)
+        let addPokemonController = AddPokemonController(pokemonAggregator: pokemonAggregator, pokemonList: pokemonList)
+        let removePokemonController = RemovePokemonController(pokemonList: pokemonList)
+        let pokemonsViewController = PokemonsViewController(pokemonList: pokemonList, addPokemonController: addPokemonController, removePokemonController: removePokemonController)
         return pokemonsViewController
     }
 }
