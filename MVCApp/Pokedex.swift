@@ -6,18 +6,26 @@
 //
 
 import Foundation
+import os
 
 class PokeDex {
-    var pokemons: [Pokemon] = {
-        guard
-            let url = Bundle.main.url(forResource: "pokemons", withExtension: "json"),
-            let data = try? Data(contentsOf: url),
-            let pokemons = try? JSONDecoder().decode([Pokemon].self, from: data)
-        else {
+    private static let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "MVCApp", category: "PokeDex")
+
+    var pokemons: [Pokemon] = PokeDex.loadPokemons()
+
+    private static func loadPokemons() -> [Pokemon] {
+        guard let url = Bundle.main.url(forResource: "pokemons", withExtension: "json") else {
+            logger.error("pokemons.json is missing from the app bundle")
             return []
         }
-        return pokemons
-    }()
+        do {
+            let data = try Data(contentsOf: url)
+            return try JSONDecoder().decode([Pokemon].self, from: data)
+        } catch {
+            logger.error("Failed to load pokemons.json: \(String(describing: error), privacy: .public)")
+            return []
+        }
+    }
 }
 
 struct Pokemon: Decodable {
