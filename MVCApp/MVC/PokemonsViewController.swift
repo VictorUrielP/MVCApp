@@ -61,8 +61,8 @@ final class PokemonsViewController: UIViewController {
         addPokemonController.didAddPokemon = { [weak self] in
             self?.pokemonWasAdded()
         }
-        removePokemonController.didRemovePokemon = { [weak self] in
-            self?.pokemonWasRemoved()
+        removePokemonController.didRemovePokemon = { [weak self] index in
+            self?.pokemonWasRemoved(at: index)
         }
         removePokemonController.selectedIndex = { [weak self] in
             self?.tableView.indexPathForSelectedRow?.row
@@ -72,20 +72,15 @@ final class PokemonsViewController: UIViewController {
     
     // MARK: TableView Operations
     private func pokemonWasAdded() {
-        tableView.reloadData()
+        let lastIndexPath = IndexPath(row: pokemonList.numberOfItems - 1, section: 0)
+        tableView.insertRows(at: [lastIndexPath], with: .automatic)
+        tableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
         removePokemonController.selectionDidChange()
-        scrollToBottom()
     }
 
-    private func pokemonWasRemoved() {
-        tableView.reloadData()
+    private func pokemonWasRemoved(at index: Int) {
+        tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
         removePokemonController.selectionDidChange()
-    }
-    
-    private func scrollToBottom() {
-        guard pokemonList.numberOfItems > 0 else { return }
-        let lastIndexPath = IndexPath(row: pokemonList.numberOfItems - 1, section: 0)
-        tableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
     }
 }
 
