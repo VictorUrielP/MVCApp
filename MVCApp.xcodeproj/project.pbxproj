@@ -14,7 +14,7 @@
 		C31F67C7290B969C00772B48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C31F67C5290B969C00772B48 /* LaunchScreen.storyboard */; };
 		C31F67D2290B9F0D00772B48 /* Pokedex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F67D1290B9F0D00772B48 /* Pokedex.swift */; };
 		C31F67D4290BA04D00772B48 /* pokemons.json in Resources */ = {isa = PBXBuildFile; fileRef = C31F67D3290BA04D00772B48 /* pokemons.json */; };
-		D1648E04290BF0520051CDA2 /* PokemonCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1648E03290BF0520051CDA2 /* PokemonCellController.swift */; };
+		D1648E04290BF0520051CDA2 /* PokemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1648E03290BF0520051CDA2 /* PokemonCell.swift */; };
 		D1648E06290BF06F0051CDA2 /* PokemonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1648E05290BF06F0051CDA2 /* PokemonList.swift */; };
 		D1648E09290BF0A00051CDA2 /* AddPokemonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1648E08290BF0A00051CDA2 /* AddPokemonController.swift */; };
 		D1648E0B290BF0C80051CDA2 /* RemovePokemonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1648E0A290BF0C80051CDA2 /* RemovePokemonController.swift */; };
@@ -47,7 +47,7 @@
 		C31F67C8290B969C00772B48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C31F67D1290B9F0D00772B48 /* Pokedex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokedex.swift; sourceTree = "<group>"; };
 		C31F67D3290BA04D00772B48 /* pokemons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pokemons.json; sourceTree = "<group>"; };
-		D1648E03290BF0520051CDA2 /* PokemonCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCellController.swift; sourceTree = "<group>"; };
+		D1648E03290BF0520051CDA2 /* PokemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCell.swift; sourceTree = "<group>"; };
 		D1648E05290BF06F0051CDA2 /* PokemonList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonList.swift; sourceTree = "<group>"; };
 		D1648E08290BF0A00051CDA2 /* AddPokemonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPokemonController.swift; sourceTree = "<group>"; };
 		D1648E0A290BF0C80051CDA2 /* RemovePokemonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemovePokemonController.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 				D1648E0E290BF4F60051CDA2 /* Composers */,
 				D1648E07290BF0960051CDA2 /* Helpers */,
 				C31F67BE290B969900772B48 /* PokemonsViewController.swift */,
-				D1648E03290BF0520051CDA2 /* PokemonCellController.swift */,
+				D1648E03290BF0520051CDA2 /* PokemonCell.swift */,
 				D1648E05290BF06F0051CDA2 /* PokemonList.swift */,
 			);
 			path = MVC;
@@ -264,7 +264,7 @@
 				D1648E10290BF5080051CDA2 /* PokemonsViewControllerComposer.swift in Sources */,
 				C31F67BD290B969900772B48 /* SceneDelegate.swift in Sources */,
 				D1648E0D290BF10C0051CDA2 /* PokemonAggregator.swift in Sources */,
-				D1648E04290BF0520051CDA2 /* PokemonCellController.swift in Sources */,
+				D1648E04290BF0520051CDA2 /* PokemonCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
