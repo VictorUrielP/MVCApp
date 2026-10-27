@@ -4,6 +4,7 @@
         <page name='Adapter'/>
         <page name='Decorator'/>
         <page name='Builder'/>
+        <page name='Singleton'/>
         <page name='Flyweight'/>
         <page name='Factory Method'/>
         <page name='Observer'/>
