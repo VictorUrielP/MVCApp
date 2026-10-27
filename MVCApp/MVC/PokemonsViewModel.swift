@@ -9,8 +9,13 @@ import Foundation
 import UIKit
 
 final class PokemonsViewModel: NSObject {
-    private let pokedex = PokeDex()
+    private let pokedex: PokeDex
     private(set) lazy var pokemons: [Pokemon] = Array(pokedex.pokemons.prefix(4))
+
+    init(pokedex: PokeDex) {
+        self.pokedex = pokedex
+        super.init()
+    }
     
     // MARK: - Computed properties
     var numberOfItems: Int {

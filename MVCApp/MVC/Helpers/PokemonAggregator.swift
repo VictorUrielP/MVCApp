@@ -6,7 +6,11 @@
 //
 
 final class PokemonAggregator {
-    private let pokedex = PokeDex()
+    private let pokedex: PokeDex
+
+    init(pokedex: PokeDex) {
+        self.pokedex = pokedex
+    }
     
     func addPokemon(pokemons: [Pokemon]) -> Pokemon? {
         pokedex.pokemons.first { candidate in
