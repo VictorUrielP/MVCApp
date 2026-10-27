@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     // MARK: - Stored Properties
     let pokedex = PokeDex()
 
-    lazy var pokemons: [Pokemon] = Array(pokedex.pokemons[...3])
+    lazy var pokemons: [Pokemon] = Array(pokedex.pokemons.prefix(4))
 
     lazy var tableView = UITableView(frame: view.bounds, style: .plain)
 
