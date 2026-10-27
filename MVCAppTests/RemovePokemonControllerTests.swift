@@ -11,11 +11,14 @@ final class RemovePokemonControllerTests: XCTestCase {
     func test_removeButtonPressed_removesTheSelectedPokemon() {
         let list = PokemonList(pokedex: makePokedex(ids: [1, 2, 3]))
         let sut = RemovePokemonController(pokemonList: list)
+        var removedIndex: Int?
         sut.selectedIndex = { 1 }
+        sut.didRemovePokemon = { removedIndex = $0 }
 
         sut.removeButtonPressed()
 
         XCTAssertEqual(list.pokemons.map(\.id), [1, 3])
+        XCTAssertEqual(removedIndex, 1)
     }
 
     func test_removeButtonPressed_withoutSelection_removesNothing() {
@@ -23,7 +26,7 @@ final class RemovePokemonControllerTests: XCTestCase {
         let sut = RemovePokemonController(pokemonList: list)
         var didRemove = false
         sut.selectedIndex = { nil }
-        sut.didRemovePokemon = { didRemove = true }
+        sut.didRemovePokemon = { _ in didRemove = true }
 
         sut.removeButtonPressed()
 

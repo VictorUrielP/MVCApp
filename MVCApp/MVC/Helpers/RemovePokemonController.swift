@@ -13,7 +13,7 @@ final class RemovePokemonController {
 
     /// Reads the current selection from the view, which owns it.
     var selectedIndex: (() -> Int?)?
-    var didRemovePokemon: (() -> Void)?
+    var didRemovePokemon: ((_ index: Int) -> Void)?
 
     init(pokemonList: PokemonList) {
         self.pokemonList = pokemonList
@@ -26,6 +26,6 @@ final class RemovePokemonController {
     @objc func removeButtonPressed() {
         guard let index = selectedIndex?() else { return }
         pokemonList.remove(at: index)
-        didRemovePokemon?()
+        didRemovePokemon?(index)
     }
 }
